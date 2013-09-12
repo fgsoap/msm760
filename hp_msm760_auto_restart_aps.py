@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Copyright 2013 fgsoap
+# All Rights Reserved.
+
 import requests, time
 
 real_ip="your_ip"
