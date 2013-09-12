@@ -23,7 +23,7 @@ datas={
 macs={
        'ap_name1':"00:24:A8:89:77:AC",
        'ap_name2':"00:24:A8:89:77:AB",
-# you can add a lots of apps here      
+# you can add a lots of aps here      
       }
 s.post(url='https://"ip"/goform/Logout',verify=False,headers=headers,data=login_data)
 for mac in macs:
