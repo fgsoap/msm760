@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # Copyright 2013 fgsoap
 # All Rights Reserved.
+# In Python 2.7.3
 try:
          import requests, time
          from pyquery import PyQuery as pq
