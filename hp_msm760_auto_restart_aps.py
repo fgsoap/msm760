@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright 2013 fgsoap
+# Copyright 2013
 # All Rights Reserved.
 # In Python 2.7.5
 try:
