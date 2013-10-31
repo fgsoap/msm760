@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright 2013
+# Copyright 2013 fgsoap
 # All Rights Reserved.
 # In Python 2.7.5
 try:
@@ -26,7 +26,7 @@ datas={
 s=requests.Session()
 s.post(url='https://ip/goform/Logout',verify=False,headers=headers,data=login_data)
 
-# Get the dict of all the aps.
+# Get the dictionaries of all the aps.
 n=s.get('https://ip/centcfg/ap_overview.asp?entity=vgroup&selector=Synchronized',verify=False)
 html=pq(n.text)
 ap_name=[]
@@ -39,7 +39,7 @@ for i in xrange(len(i_a)):
 
 aps=dict(zip(ap_name,ap_mac))
 
-#Let's do the restart!
+#Let's restart all the aps!
 for mac in aps:
     realmac=aps.get(mac)
     url='https://ip/centcfg/ap_overview_details.asp?entity=device&selector=%s&product=20' % realmac
