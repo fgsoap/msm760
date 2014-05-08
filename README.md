@@ -1,3 +1,3 @@
 msm760
 ======
-This is used to restart a lots of aps controlled by the HP MSM760.
+This is used to restart a lots of APs controlled by the HP MSM760.
