@@ -10,24 +10,27 @@ except ImportError:
          print "Please make sure the Requests and the PyQuery are installed!"
 
 # Please change the "ip" into your real ip.
+ip = ''
+sysadmin = ''
+password = ''
 headers={
-         'Referer':'https://ip/home.asp',
-         'Host':"ip",'User-Agent':'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36',
+         'Referer':'https://%s/home.asp'%ip,
+         'Host':ip,'User-Agent':'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36',
          }
 login_data={
 # Please change them.
-            'username':'admin',
-            'pw':'admin'
+            'username':sysadmin,
+            'pw':password'
             }
 datas={
        'Reset':'Restart'
        }
 # Login
 s=requests.Session()
-s.post(url='https://ip/goform/Logout',verify=False,headers=headers,data=login_data)
+s.post(url='https://%s/goform/Logout'%ip,verify=False,headers=headers,data=login_data)
 
 # Get the dictionaries of all the aps.
-n=s.get('https://ip/centcfg/ap_overview.asp?entity=vgroup&selector=Synchronized',verify=False)
+n=s.get('https://%s/centcfg/ap_overview.asp?entity=vgroup&selector=Synchronized'%ip,verify=False)
 html=pq(n.text)
 ap_name=[]
 ap_mac=[]
@@ -42,10 +45,10 @@ aps=dict(zip(ap_name,ap_mac))
 #Let's restart all the aps!
 for mac in aps:
     realmac=aps.get(mac)
-    url='https://ip/centcfg/ap_overview_details.asp?entity=device&selector=%s&product=20' % realmac
+    url='https://%s/centcfg/ap_overview_details.asp?entity=device&selector=%s&product=20'%ip % realmac
     s.get(url,verify=False)
-    s.get('https://ip/centcfg/maintenance.asp',verify=False)
-    s.post('https://ip/goform/FormDeviceSystemRestart',verify=False,data=datas)
+    s.get('https://%s/centcfg/maintenance.asp'%ip,verify=False)
+    s.post('https://%s/goform/FormDeviceSystemRestart'%ip,verify=False,data=datas)
     print mac + " " + "has been restarted!"
     time.sleep(1)
 
